@@ -7,6 +7,7 @@ mongoose.connect('mongodb://localhost/coolzones');
 Location.remove({})
 .then(function() {
 	locationList.forEach(function(location) {
+		console.log(location);
 		var l = new Location();
 		l.name = location.locationName;
 		l.address = {};

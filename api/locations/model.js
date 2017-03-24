@@ -1,14 +1,14 @@
 var mongoose = require('mongoose');
 
 var LocationSchema = new mongoose.Schema({
-	locationTypeDesc: String,
-	locationDesc: String,
-	locationName: String,
-	address: String,
-	phone: String,
-	lat: Number,
-	lon: Number
 
+   name: String,
+   address: {
+   	lat: Number,
+   	lon: Number
+   },
+   category: String,
+   phone: String
 });
 
 // first arg is naming export object/model, second is passing the schema
