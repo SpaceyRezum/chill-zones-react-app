@@ -7,7 +7,7 @@ var webpackMiddleware = require('webpack-dev-middleware');
 var mongoose = require('mongoose');
 
 // TODO: Enter a DB Name for your project
-mongoose.connect('mongodb://localhost/db_name');
+mongoose.connect('mongodb://localhost/coolzones');
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -19,7 +19,7 @@ app.use(webpackMiddleware(webpack(require('./webpack.config.js'))));
 app.use(express.static('public'));
 
 // Include your API routes here
-// app.use('/api/name', require('./api/name'));
+app.use('/api/locations', require('./api/locations'));
 
 // If none of the above matches, serve public/index.html.
 app.get('*', (req, res) => res.sendFile(__dirname + '/public/index.html'))
