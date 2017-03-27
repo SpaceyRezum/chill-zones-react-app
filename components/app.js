@@ -1,4 +1,5 @@
 import React from 'react';
+import Container from './container';
 
 class App extends React.Component {
 
@@ -6,7 +7,7 @@ class App extends React.Component {
     return (
     	<div>
 	    	<h1>CHILL ZONES</h1>
-    		<Map />
+    		<Container />
     	</div>
     )
   }
