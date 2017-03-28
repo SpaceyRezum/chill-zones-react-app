@@ -2,7 +2,7 @@ var Location = require('../api/locations/model');
 var locationList = require('../assets/locations.json');
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/coolzones');
+mongoose.connect('mongodb://localhost/chill-zones');
 
 Location.remove({})
 .then(function() {
