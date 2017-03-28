@@ -4,6 +4,9 @@ var LocationSchema = new mongoose.Schema({
 
    name: String,
    address: {
+   	street: String,
+   	zip_code: String,
+   	city: String,
    	lat: Number,
    	lon: Number
    },
