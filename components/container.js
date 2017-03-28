@@ -9,11 +9,15 @@ export class Container extends React.Component {
   render() {
     const style = {
       width: '100vw',
-      height: '100vh'
+      height: '90vh'
     }
     return (
-      <div style={style} >
-        <Map google={this.props.google} zoom={14} />
+      <div>
+        <Map google={this.props.google} 
+        	 zoom={14} 
+        	 style={{width: '50%', height: 'calc(100% - 90px)', position: 'relative'}}
+        	 initialCenter={{lat: 43.65073, lng: -79.40677}} // initial center Toronto
+        />
       </div>
     )
   }

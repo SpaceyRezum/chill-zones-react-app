@@ -1,6 +1,8 @@
 import React from 'react';
 import Container from './container';
+import InfoText from './infotext';
 import $ from 'jquery';
+import styles from './app.scss';
 
 class App extends React.Component {
 	constructor(props) {
@@ -13,13 +15,16 @@ class App extends React.Component {
   render(){
     return (
     	<div>
-	    	<h1>CHILL ZONES</h1>
-    		<Container />
+    		<header>
+		    	<h1>CHILL ZONES</h1>
+		    </header>
+		    <main>
+			    <InfoText />
+	    		<Container locations={this.state.locations} />
+		    </main>
     	</div>
     )
   }
-
-  // <Map />
 
   componentDidMount() {
   	if (this.state.locations.length === 0) {

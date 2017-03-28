@@ -1,11 +1,30 @@
+html {
+	height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Helvetica Neue', sans-serif;
   font-size: 16px;
   line-height: 150%;
+  height: 100%;
+}
+
+#placeholder, #placeholder > div {
+	height: 100%;
 }
 
 h1 {
 	font-family: sans-serif;
+	text-align: center;
+	line-height: 50px;
+	border-bottom: 2px solid black;
+	background: #34B7EA;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+main {
+	display: flex;
 }
