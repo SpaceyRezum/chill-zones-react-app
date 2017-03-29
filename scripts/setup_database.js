@@ -51,24 +51,3 @@ Location.remove({})
   console.log("All locations are saved! Ctrl-C to exit.")
 })
 .catch(console.log);
-
-// locationList.forEach(function(location) {
-// 		var l = new Location();
-// 		l.name = location.locationName;
-// 		l.address = {};
-// 		l.address.lat = location.lat;
-// 		l.address.lng = location.lon;
-// 		l.category = location.locationDesc;
-// 		l.phone = location.phone;
-// $.ajax({
-// 			url: googleAPIUrl + l.address.lat + ',' + l.address.lng + googleAPIkey,
-// 			method: 'GET',
-// 			success: function(response) {
-// 				response.
-// 			}, 
-// 			error: function(err) {
-// 				res.send(err);
-// 			}
-// 		});
-
-// 		l.save();
