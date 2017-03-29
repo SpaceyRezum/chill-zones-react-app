@@ -8,7 +8,7 @@ class InfoText extends React.Component {
 			<div className="info-wrapper">
 				<h2>Too hot in the 6ix?</h2>
 				<p className="subtitle">Find locations to beat the heat.</p>
-				<LocationsList />
+				<LocationsList locations={ this.props.locations }/>
 			</div>
 		)
 	}

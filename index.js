@@ -7,7 +7,7 @@ var webpackMiddleware = require('webpack-dev-middleware');
 var mongoose = require('mongoose');
 
 // TODO: Enter a DB Name for your project
-mongoose.connect('mongodb://localhost/coolzones');
+mongoose.connect('mongodb://localhost/chill-zones');
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());

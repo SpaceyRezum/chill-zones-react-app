@@ -19,7 +19,7 @@ class App extends React.Component {
 		    	<h1>CHILL ZONES</h1>
 		    </header>
 		    <main>
-			    <InfoText />
+			    <InfoText locations={this.state.locations} />
 	    		<Container locations={this.state.locations} />
 		    </main>
     	</div>
