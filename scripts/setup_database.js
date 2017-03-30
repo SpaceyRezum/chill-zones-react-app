@@ -13,8 +13,16 @@ Location.remove({})
 	locationList.forEach(function(location) {
 
 		var url = googleAPIUrl + location.lat + ',' + location.lon + googleAPIkey;
+		var previousData;
 	
 		$.get(url, function(data) {
+			if (!data) {
+				console.log(previousData);
+				return;
+			}
+			
+			previousData = data; 
+
 			var l = new Location();
 			l.name = location.locationName;
 			l.category = location.locationDesc;
@@ -26,7 +34,6 @@ Location.remove({})
 				city: '',
 				postal_code: ''
 			};
-
 			var response = JSON.parse(data);
 
 			response = response.results[0];
