@@ -28,4 +28,4 @@ app.use('/api/locations', require('./api/locations'));
 app.get('*', (req, res) => res.sendFile(__dirname + '/public/index.html'))
 
 //heroku will tell us what the port is. PORT var set by heroku
-app.listen(precess.env.PORT || 8080);
+app.listen(process.env.PORT || 8080);
