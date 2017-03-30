@@ -3,7 +3,7 @@ var locationList = require('../assets/locations.json');
 var najax = $ = require('najax');
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/chill-zones');
+mongoose.connect(process.env.MONGODB_SERVER);
 
 var googleAPIUrl = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='
 var googleAPIkey = '&key=AIzaSyDZY5u6OOV3Xuh_EUp0sIML8maJTzakfyc'
