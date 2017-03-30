@@ -1,4 +1,12 @@
 import React from 'react';
-import styles from './infotext.scss';
+
+class LocationsList extends React.Component {
+	render(){
+		return (
+			<div>
+			</div>
+		)
+	}
+}
 
 export default LocationsList;
