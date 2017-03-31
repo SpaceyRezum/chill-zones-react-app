@@ -9,7 +9,6 @@ var webpackMiddleware = require('webpack-dev-middleware');
 
 var mongoose = require('mongoose');
 
-// TODO: Enter a DB Name for your project
 mongoose.connect(process.env.MONGODB_SERVER);
 
 var bodyParser = require('body-parser');
