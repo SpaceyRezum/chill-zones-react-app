@@ -34,6 +34,7 @@ Location.remove({})
 				city: '',
 				postal_code: ''
 			};
+			
 			var response = JSON.parse(data);
 
 			response = response.results[0];
