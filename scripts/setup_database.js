@@ -10,8 +10,6 @@ var googleAPIkey = '&key=AIzaSyDZY5u6OOV3Xuh_EUp0sIML8maJTzakfyc'
 
 Location.remove({})
 .then(function() {
-	var previousData;
-
 	locationList.forEach(function(location) {
 
 		var url = googleAPIUrl + location.lat + ',' + location.lon + googleAPIkey;
@@ -31,12 +29,6 @@ Location.remove({})
 			};
 
 			var response = JSON.parse(data);
-
-			if (!response) {
-				console.log(previousData);
-				return;
-			} else {
-				previousData = data;
 
 				response = response.results[0];
 				
