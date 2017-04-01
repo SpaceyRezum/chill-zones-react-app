@@ -1,12 +1,12 @@
-var Post = require('./model');
+var Location = require('./model');
 
 exports.index = function(req, res) {
-  Post.find()
+  Location.find()
   .then(locations => res.send(locations))
 }
 
 exports.show = function(req, res) {
-  Post.findById(req.params.id)
+  Location.findById(req.params.id)
     .then(location => res.send(location))
     .catch(err => {
       res.status(404);

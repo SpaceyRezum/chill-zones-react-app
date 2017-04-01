@@ -28,7 +28,7 @@ Location.remove({})
 				postal_code: ''
 			};
 
-			console.log('data is:', data)
+			console.log('data is:', data);
 
 			var response = JSON.parse(data);
 
@@ -47,8 +47,7 @@ Location.remove({})
 					}
 				});
 
-				l.save();
-			}
+			l.save();
 		});
 	})
 })
