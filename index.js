@@ -1,16 +1,17 @@
 var express = require('express');
 var app = express();
-
-require('dotenv').config();
-console.log(process.env.IT_WORKS);
-
+var mongoose = require('mongoose');
 var webpack = require('webpack');
 var webpackMiddleware = require('webpack-dev-middleware');
+var setupAuth = require('./auth');
 
-var mongoose = require('mongoose');
+require('dotenv').config();
 
-// TODO: Enter a DB Name for your project
+// Connect to the database pointed at in our server environment
 mongoose.connect(process.env.MONGODB_SERVER);
+
+// Use the method set in auth.js to authenticate user
+setupAuth(app);
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
