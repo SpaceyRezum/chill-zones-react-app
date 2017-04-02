@@ -25,6 +25,8 @@ h1 {
     padding: 20px;
 }
 
-main {
+main > div > div {
 	display: flex;
+	height: 100vh;
+	
 }

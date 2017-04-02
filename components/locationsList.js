@@ -10,11 +10,12 @@ class LocationsList extends React.Component {
 				{ this.props.locations.map((location, index) => {
 					return ( 
 						<Location key={ index }
-											index={ index }
-											name={ location.name }
-											category={ location.category }
-											phone={ location.phone }
-											address={ location.address }
+								  index={ index }
+								  name={ location.name }
+								  category={ location.category }
+								  phone={ location.phone }
+								  address={ location.address }
+								  className={index === this.props.index ? 'highlight' : 'noHighlight'}
 					 />
 					)
 				}) }

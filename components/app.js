@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from './container';
-import InfoText from './infotext';
+
 import $ from 'jquery';
 import styles from './app.scss';
 
@@ -8,7 +8,8 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			locations: []
+			locations: [],
+      indexSelected: null
 		}
 	}
 
@@ -19,8 +20,7 @@ class App extends React.Component {
 		    	<h1>CHILL ZONES</h1>
 		    </header>
 		    <main>
-			    <InfoText locations={this.state.locations} />
-	    		<Container locations={this.state.locations} />
+	    		<Container locations={this.state.locations} indexSelected={this.state.indexSelected} />
 		    </main>
     	</div>
     )

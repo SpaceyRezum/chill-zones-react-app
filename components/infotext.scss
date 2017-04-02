@@ -2,9 +2,15 @@
 	width: 50%;
 }
 
+.info-wrapper + div {
+	left: 50%;
+	border-left: 2px solid black;
+}
+
 .location-list {
-	height: 70vh;
+	height: 100%;
 	overflow-y: scroll;
+    border-top: 2px solid black;
 	
 	.location-item {
 		height: 120px;
