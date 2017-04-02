@@ -1,7 +1,8 @@
 import React from 'react';
 import GoogleApiComponent from './GoogleApiComponent';
 
-import { Map, Marker, InfoWindow } from 'google-maps-react';
+import { Map, Marker } from 'google-maps-react';
+import InfoWindow from './info-window';
 
 
 export class Container extends React.Component {
@@ -30,36 +31,23 @@ export class Container extends React.Component {
 
         	 { this.props.locations.map( (location, index) => {
         	 	return (
-        	 		<div>
-		    	 		<Marker
-		    	 			key={index}
-		    	 			position={{lat: location.address.lat, lng: location.address.lon}}
-		    	 			name={location.address.name}
-		    	 			onClick={this.onMarkerClick}
-		    	 		/>
-		    	 		{/*<InfoWindow
-		    	 			  // onOpen={this.windowHasOpened}
-		    	 			  // onClose={this.windowHasClosed}
-	    	 		          marker={this.state.activeMarker}
-	    	 		          visible={this.state.showingInfoWindow} >
-    	 		            <div>
-    	 		              <h1>{this.state.selectedPlace.name}</h1>
-    	 		            </div>
-    	 		        </InfoWindow> */}
-		    	 	</div>	
+	    	 		<Marker
+	    	 			key={index}
+	    	 			position={{lat: location.address.lat, lng: location.address.lon}}
+	    	 			name={`${location.name} ${location.category}`}
+	    	 			onClick={this.onMarkerClick}
+	    	 		/>
     	 		)
 	        }) }
+	 		<InfoWindow
+ 		          marker={this.state.activeMarker}
+ 		          visible={this.state.showingInfoWindow} >
+		            <div>
+		              <p>{this.state.selectedPlace.name}</p>
+		            </div>
+		    </InfoWindow> 
 
-        	 <Marker onClick={this.onMarkerClick}
-        	         name={'Current location'} />
-
-        	         <InfoWindow
-        	           marker={this.state.activeMarker}
-        	           visible={this.state.showingInfoWindow}>
-        	             <div>
-        	               <h1>{this.state.selectedPlace.name}</h1>
-        	             </div>
-        	         </InfoWindow>
+        	
 
         </Map>
       </div>
@@ -69,7 +57,7 @@ export class Container extends React.Component {
   onMarkerClick(props, marker, e) {
   	console.log(props)
     this.setState({
-      // selectedPlace: props,
+      selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true
     });
