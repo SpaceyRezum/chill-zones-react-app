@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 
 var LocationSchema = new mongoose.Schema({
-
    name: String,
    address: {
    	street: String,

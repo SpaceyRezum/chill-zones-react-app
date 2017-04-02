@@ -17,15 +17,16 @@ module.exports = function(app) {
   app.use(passport.session());
 
   // Implement a login route using passport.authenticate middleware method
-  app.post('/login', passport.authenticate('local'), function(req, res) {
+  app.post('/api/login', passport.authenticate('local'), function(req, res) {
     res.send(req.user)
   });
 
   // Implement a signup route
-  app.post('/signup', function(req, res, next) {
+  app.post('/api/signup', function(req, res, next) {
     var user = new User();
     user.email = req.body.email;
     user.name = req.body.name;
+
     User.register(user, req.body.password, (err) => {
       if (err) { next(err); }
       req.login(user, function(err) {
