@@ -7,13 +7,17 @@ import { Map, Marker, InfoWindow } from 'google-maps-react';
 export class Container extends React.Component {
   constructor(){
   	super();
+
+  	this.onMarkerClick = this.onMarkerClick.bind(this);
+
+  	this.state = {
+  		showingInfoWindow: false,
+  		activeMarker: {},
+  		selectedPlace: {}
+  	}
   }
 
   render() {
-    const style = {
-      width: '100vw',
-      height: '90vh'
-    }
     if (!this.props.google) {
     	return null;
     }
@@ -26,26 +30,49 @@ export class Container extends React.Component {
 
         	 { this.props.locations.map( (location, index) => {
         	 	return (
-	    	 		<Marker
-	    	 			key={index}
-	    	 			position={{lat: location.address.lat, lng: location.address.lon}}
-	    	 			name={location.address.name}
-	    	 		/>
-	    	 		// console.log({location, index})
+        	 		<div>
+		    	 		<Marker
+		    	 			key={index}
+		    	 			position={{lat: location.address.lat, lng: location.address.lon}}
+		    	 			name={location.address.name}
+		    	 			onClick={this.onMarkerClick}
+		    	 		/>
+		    	 		{/*<InfoWindow
+		    	 			  // onOpen={this.windowHasOpened}
+		    	 			  // onClose={this.windowHasClosed}
+	    	 		          marker={this.state.activeMarker}
+	    	 		          visible={this.state.showingInfoWindow} >
+    	 		            <div>
+    	 		              <h1>{this.state.selectedPlace.name}</h1>
+    	 		            </div>
+    	 		        </InfoWindow> */}
+		    	 	</div>	
     	 		)
 	        }) }
-	    	<Marker
-			    // name={'A little left'}
-			    // position={{lat: this.props.locations[0].address.lat, lng: -79.40670}} 
-			    // icon={{
-			    //       url: "http://media.mercola.com/imageserver/public/2010/December/index-finger-12.21.jpg",
-			    //       anchor: new this.props.google.maps.Point(32,32),
-			    //       scaledSize: new this.props.google.maps.Size(64,64)
-			    //     }} 
-			        />
+
+        	 <Marker onClick={this.onMarkerClick}
+        	         name={'Current location'} />
+
+        	         <InfoWindow
+        	           marker={this.state.activeMarker}
+        	           visible={this.state.showingInfoWindow}>
+        	             <div>
+        	               <h1>{this.state.selectedPlace.name}</h1>
+        	             </div>
+        	         </InfoWindow>
+
         </Map>
       </div>
     )
+  }
+
+  onMarkerClick(props, marker, e) {
+  	console.log(props)
+    this.setState({
+      // selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
   }
 }
 

@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
+var passportLocalMongoose = require('passport-local-mongoose');
+
 var webpack = require('webpack');
 var webpackMiddleware = require('webpack-dev-middleware');
 var setupAuth = require('./auth');
