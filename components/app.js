@@ -56,8 +56,8 @@ class App extends React.Component {
   	$.get("/api/locations").then((data) => {
   		let locations = data;
   		this.setState({ locations: locations })
-  		console.log('locations were updated, here they are: ');
-  		console.log(this.state.locations);
+  		// console.log('locations were updated, here they are: ');
+  		// console.log(this.state.locations);
   	});
   }
 }
