@@ -11,7 +11,7 @@ class App extends React.Component {
 		super(props);
 		this.state = {
 			locations: [],
-      indexSelected: null
+      indexSelected: null,
       mode: 'not-logged',
       user: ''
 		};
@@ -53,7 +53,7 @@ class App extends React.Component {
   }
 
   getLocationsFromAPI() {
-  	$.get("/api/locations").then((data) => {
+  	$.get('/api/locations').then((data) => {
   		let locations = data;
   		this.setState({ locations: locations })
   		// console.log('locations were updated, here they are: ');
