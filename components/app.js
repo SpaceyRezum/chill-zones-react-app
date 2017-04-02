@@ -3,6 +3,8 @@ import Container from './container';
 
 import $ from 'jquery';
 import styles from './app.scss';
+import Login from './login';
+// import AddLocation from './add-location';
 
 class App extends React.Component {
 	constructor(props) {
@@ -10,7 +12,11 @@ class App extends React.Component {
 		this.state = {
 			locations: [],
       indexSelected: null
-		}
+      mode: 'not-logged',
+      user: ''
+		};
+
+    this.loginUser = this.loginUser.bind(this);
 	}
 
   render(){
@@ -18,6 +24,11 @@ class App extends React.Component {
     	<div>
     		<header>
 		    	<h1>CHILL ZONES</h1>
+          { this.state.mode === 'not-logged' ? 
+            <Login onLogin={ this.loginUser }/> :
+            null
+            // <AddLocation />
+          }
 		    </header>
 		    <main>
 	    		<Container locations={this.state.locations} indexSelected={this.state.indexSelected} />
@@ -30,6 +41,15 @@ class App extends React.Component {
   	if (this.state.locations.length === 0) {
   		this.getLocationsFromAPI();
   	}
+  }
+
+  loginUser(user) {
+    if (user) {
+      this.setState({
+        user: user,
+        mode: 'logged'
+      });
+    }
   }
 
   getLocationsFromAPI() {

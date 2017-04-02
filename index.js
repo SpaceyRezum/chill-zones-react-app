@@ -12,11 +12,12 @@ require('dotenv').config();
 // Connect to the database pointed at in our server environment
 mongoose.connect(process.env.MONGODB_SERVER);
 
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+
 // Use the method set in auth.js to authenticate user
 setupAuth(app);
 
-var bodyParser = require('body-parser');
-app.use(bodyParser.json());
 
 // Serve bundle.js
 app.use(webpackMiddleware(webpack(require('./webpack.config.js'))));
