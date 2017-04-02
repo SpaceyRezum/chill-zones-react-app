@@ -16,7 +16,6 @@ class LocationsList extends React.Component {
 								  category={ location.category }
 								  phone={ location.phone }
 								  address={ location.address }
-								  // className={index === this.props.index ? 'highlight' : 'noHighlight'}
 					 />
 					)
 				}) }
@@ -25,7 +24,7 @@ class LocationsList extends React.Component {
 	}
 
 	componentDidUpdate(){
-		if (this.props.index && this.props.index !== this.props.index) {
+		if (this.props.index) {
 			var container = $('.location-list'),
 			    scrollTo = $(`#${this.props.index}`);
 
