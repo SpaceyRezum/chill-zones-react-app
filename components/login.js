@@ -23,10 +23,11 @@ class Login extends React.Component {
 
   render(){
     return (
-      <div>
-        <button onClick={ () => this.toggleModalWindow('signup') }>Sign up</button>
-        <button onClick={ () => this.toggleModalWindow('login') }>Log in</button>
-
+      <div className="login">
+        <div className="loginButtons">
+          <button onClick={ () => this.toggleModalWindow('signup') }>Sign up</button>
+          <button onClick={ () => this.toggleModalWindow('login') }>Log in</button>
+        </div>
         <div className={ this.state.modalVisibility ? 'modal-window visible' : 'modal-window'}>
           { this.state.modalContent == 'signup' ?
             <Field label="Name" name="name" value={ this.state.login.name } onChange={ this.updateField } /> : null

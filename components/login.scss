@@ -1,5 +1,24 @@
+.login {
+  position: relative; 
+
+}
+
+.loginButtons {
+  position: absolute;
+  top: -60px;
+  right: 30px;
+}
+
 .modal-window {
   display: none;
+  background: whitesmoke;
+  padding: 80px 60px 80px 40px;
+  position: absolute;
+  z-index: 10;
+  width: 40vw;
+  left: 30vw;
+  top: 10vw;
+  box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.5);
 }
 
 .visible {

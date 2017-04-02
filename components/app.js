@@ -11,7 +11,7 @@ class App extends React.Component {
 		super(props);
 		this.state = {
 			locations: [],
-      indexSelected: null
+      indexSelected: null,
       mode: 'not-logged',
       user: ''
 		};

@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import GoogleApiComponent from './GoogleApiComponent';
 
 import { Map, Marker } from 'google-maps-react';
@@ -61,9 +62,10 @@ export class Container extends React.Component {
       activeMarker: marker,
       showingInfoWindow: true
     });
-
-
-    // this.state.selectedPlace.index
+    // const theOne = $(`#${this.state.selectedPlace.index}`)
+    // window.location.href = `#${this.state.selectedPlace.index}`;
+    
+    console.log(this.state.selectedPlace.index);
   }
 }
 
