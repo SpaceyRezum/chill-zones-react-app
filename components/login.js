@@ -70,6 +70,7 @@ class Login extends React.Component {
         this.props.onLogin(user);
       },
       error: (err) => {
+        console.log(err);
         this.setState({ error: "We couldn't log you in with those credentials." });
       }
     })

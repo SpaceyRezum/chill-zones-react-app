@@ -4,7 +4,7 @@ import Container from './container';
 import $ from 'jquery';
 import styles from './app.scss';
 import Login from './login';
-// import AddLocation from './add-location';
+import AddLocation from './add-location';
 
 class App extends React.Component {
 	constructor(props) {
@@ -17,6 +17,7 @@ class App extends React.Component {
 		};
 
     this.loginUser = this.loginUser.bind(this);
+    this.signOut = this.signOut.bind(this);
 	}
 
   render(){
@@ -26,8 +27,10 @@ class App extends React.Component {
 		    	<h1>CHILL ZONES</h1>
           { this.state.mode === 'not-logged' ? 
             <Login onLogin={ this.loginUser }/> :
-            null
-            // <AddLocation />
+            <div>
+              <AddLocation />
+              <button onClick={this.signOut}>Sign out</button>
+            </div>
           }
 		    </header>
 		    <main>
@@ -50,6 +53,13 @@ class App extends React.Component {
         mode: 'logged'
       });
     }
+  }
+
+  signOut() {
+    this.setState({
+      user: '',
+      mode: 'not-logged'
+    });
   }
 
   getLocationsFromAPI() {
