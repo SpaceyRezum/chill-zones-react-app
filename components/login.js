@@ -23,7 +23,7 @@ class Login extends React.Component {
 
   render(){
     return (
-      <div className="login">
+      <div className="login button-container">
         <div className="loginButtons">
           <button onClick={ () => this.toggleModalWindow('signup') }>Sign up</button>
           <button onClick={ () => this.toggleModalWindow('login') }>Log in</button>

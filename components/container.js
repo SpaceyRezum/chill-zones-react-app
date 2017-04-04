@@ -29,7 +29,7 @@ export class Container extends React.Component {
       	<InfoText locations={this.props.locations} selectedPlace={ this.state.selectedPlace.index} />
         <Map google={this.props.google} 
         	 zoom={14} 
-        	 style={{width: '50%', height: 'calc(100% - 90px)', position: 'relative'}}
+        	 style={{width: '100%', height: '100%', position: 'relative'}}
         	 initialCenter={{lat: 43.65073, lng: -79.40677}} >
 
         	 { this.props.locations.map( (location, index) => {

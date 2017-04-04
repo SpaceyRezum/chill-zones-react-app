@@ -27,10 +27,7 @@ class App extends React.Component {
 		    	<h1>CHILL ZONES</h1>
           { this.state.mode === 'not-logged' ? 
             <Login onLogin={ this.loginUser }/> :
-            <div>
-              <AddLocation />
-              <button onClick={this.signOut}>Sign out</button>
-            </div>
+            <AddLocation onSignOut={ this.signOut }/>
           }
 		    </header>
 		    <main>

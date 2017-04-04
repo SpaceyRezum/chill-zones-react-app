@@ -1,9 +1,9 @@
-.login {
-  position: relative; 
-
+.button-container {
+  position: relative;
 }
 
-.loginButtons {
+.loginButtons,
+.location-component-buttons {
   position: absolute;
   top: -60px;
   right: 30px;
@@ -19,6 +19,15 @@
   left: 30vw;
   top: 10vw;
   box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.5);
+
+  .close-button {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: black;
+    font-size: 12px;
+    cursor: pointer;
+  }
 }
 
 .visible {

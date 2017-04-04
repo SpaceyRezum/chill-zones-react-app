@@ -24,8 +24,11 @@ class AddLocation extends React.Component {
 
 	render(){
     return (
-    	<div className="add-new-location">
-    		<button onClick={ () => this.setState({ modalVisibility: true }) }>Add New Location</button>
+    	<div className="add-new-location button-container">
+    		<div className="location-component-buttons">
+    			<button onClick={ () => this.setState({ modalVisibility: true }) }>Add New Location</button>
+    			<button onClick={ this.props.onSignOut }>Sign out</button>
+    		</div>
 				<div className={ this.state.modalVisibility ? 'modal-window visible' : 'modal-window'}>
 					<a className="close-button" onClick={ () => this.setState({ modalVisibility: false }) }>X</a>
 					
