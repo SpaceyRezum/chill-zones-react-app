@@ -29,6 +29,7 @@ class Login extends React.Component {
           <button onClick={ () => this.toggleModalWindow('login') }>Log in</button>
         </div>
         <div className={ this.state.modalVisibility ? 'modal-window visible' : 'modal-window'}>
+          <a className="close-button" onClick={ () => this.setState({ modalVisibility: false }) }>X</a>
           { this.state.modalContent == 'signup' ?
             <Field label="Name" name="name" value={ this.state.login.name } onChange={ this.updateField } /> : null
           }
