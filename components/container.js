@@ -40,6 +40,11 @@ export class Container extends React.Component {
 	    	 			position={{lat: location.address.lat, lng: location.address.lon}}
 	    	 			name={`${location.name} ${location.category}`}
 	    	 			onClick={this.onMarkerClick}
+	    	 			// icon={{
+	 			     //      url: "../assets/images/noun_798989_cc.svg",
+	 			     //      anchor: new this.props.google.maps.Point(32,32),
+	 			     //      scaledSize: new this.props.google.maps.Size(64,64)
+	 			     //    }} 
 	    	 		/>
     	 		)
 	        }) }
@@ -64,7 +69,7 @@ export class Container extends React.Component {
     });
     // const theOne = $(`#${this.state.selectedPlace.index}`)
     // window.location.href = `#${this.state.selectedPlace.index}`;
-    
+
     console.log(this.state.selectedPlace.index);
   }
 }

@@ -8,7 +8,7 @@ class Location extends React.Component {
 				<div>{ this.props.name } { this.props.category }</div>
 				<div>{ this.props.address.street } - { this.props.address.postal_code } - { this.props.address.city }</div>
 				<div><a href={`tel:${ this.props.phone }`}>{ this.props.phone }</a></div>
-				<hr/>
+				
 			</div>
 		)
 	}
