@@ -11,6 +11,7 @@ class AddLocation extends React.Component {
 			error: '',
 			newLocation: {
 				name: '',
+				category: '',
 				street: '',
 				postal_code: '',
 				city: ''
@@ -23,13 +24,28 @@ class AddLocation extends React.Component {
 	}
 
 	render(){
-    return (
-    	<div className="add-new-location">
-    		<button onClick={ () => this.setState({ modalVisibility: true }) }>Add New Location</button>
+	    return (
+	    	<div className="add-new-location">
+	    		<button onClick={ () => this.setState({ modalVisibility: true }) }>Add New Location</button>
 				<div className={ this.state.modalVisibility ? 'modal-window visible' : 'modal-window'}>
 					<a className="close-button" onClick={ () => this.setState({ modalVisibility: false }) }>X</a>
 					
 					<Field label="Name" name="name" value={ this.state.newLocation.name } onChange={ this.updateField } />
+					<form label="Category" onChange={ this.updateField } value={ this.state.newLocation.category }>
+						Category
+						<input type="radio" name="category" id="CommunityCenter" value="Community Center"/>
+						<label htmlFor="CommunityCenter">Community Center</label>
+						<input type="radio" name="category" id="Library" value="Library" />
+						<label htmlFor="Library">Library</label>
+						<input type="radio" name="category" id="ShoppingMall" value="Shopping Mall" />
+						<label htmlFor="ShoppingMall">Shopping Mall</label>
+						<input type="radio" name="category" id="Museum" value="Museum" />
+						<label htmlFor="Museum">Museum</label>
+						<input type="radio" name="category" id="Business" value="Business" />
+						<label htmlFor="Business">Business</label>
+						<input type="radio" name="category" id="other" value="Other place" />
+						<label htmlFor="other">Other place</label>
+					</form>
 					<Field label="Street Number & Street Name" name="street" value={ this.state.newLocation.street } onChange={ this.updateField } />
 					<Field label="Postal Code" name="postal_code" value={ this.state.newLocation.postal_code } onChange={ this.updateField } />
 					<Field label="City (must be in the Great Toronto Area)" name="city" value={ this.state.newLocation.city } onChange={ this.updateField } />
@@ -46,7 +62,7 @@ class AddLocation extends React.Component {
 					</div>
 				</div>
 			</div>
-    );
+	    );
 	}
 
 	updateField(evt) {
