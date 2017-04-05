@@ -92,20 +92,9 @@ class AddLocation extends React.Component {
 			$.get({
 				url: url,
 				success: function(data) {
-
-				var l = new Location();
-				// l.name = newLocation.locationName;
-				// l.category = newLocation.locationDesc;
-				// l.phone = '';
-				// l.newLocation = {
-				// 	lat: newLocation.lat,
-				// 	lon: newLocation.lon,
-				// 	street: '',
-				// 	city: '',
-				// 	postal_code: ''
-				// };
-
-				console.log('data is:', data);},
+					console.log('data is:', data);
+					console.log('our search result is:')
+				},
 				error: function(err) { console.log(err)}
 
 				// var response = JSON.parse(data);
