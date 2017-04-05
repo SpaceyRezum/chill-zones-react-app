@@ -17,4 +17,13 @@
 		padding: 20px 40px;
 		border-bottom: 1px solid #ebebeb;
 	}
+
+	.highlighted {
+		background: #34b7ea;
+		transition: background-color 0.8s ease;
+		a {
+			color: black;
+			text-transform: underline;
+		}
+	}
 }

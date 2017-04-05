@@ -8,9 +8,15 @@ class InfoText extends React.Component {
 			<div className="info-wrapper">
 				<h2>Too hot in the 6ix?</h2>
 				<p className="subtitle">Find locations to beat the heat.</p>
-				<LocationsList locations={ this.props.locations } index={this.props.selectedPlace} />
+				<LocationsList changeSelectedPlace={ this.changeSelectedPlace } 
+											 locations={ this.props.locations } 
+											 selectedPlace={ this.props.selectedPlace } />
 			</div>
 		)
+	}
+
+	changeSelectedPlace(newSelectedPlace) {
+		console.log('newSelectedPlace', newSelectedPlace);
 	}
 }
 
