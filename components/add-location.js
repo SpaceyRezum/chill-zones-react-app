@@ -83,6 +83,53 @@ class AddLocation extends React.Component {
 		} else {
 			console.log('Location to be tested against Google places API: ', newLocation);
 			// AJAX call to Google Geocode API to write here
+			////////////////////////////////////////////////
+			const googleAPIUrl = 'https://maps.googleapis.com/maps/api/geocode/json';
+			const googleAPIkey = '&key=AIzaSyDZY5u6OOV3Xuh_EUp0sIML8maJTzakfyc';
+
+			const url = googleAPIUrl + '?address=' + newLocation.address + googleAPIkey;
+				
+			$.get({
+				url: url,
+				success: function(data) {
+
+				var l = new Location();
+				// l.name = newLocation.locationName;
+				// l.category = newLocation.locationDesc;
+				// l.phone = '';
+				// l.newLocation = {
+				// 	lat: newLocation.lat,
+				// 	lon: newLocation.lon,
+				// 	street: '',
+				// 	city: '',
+				// 	postal_code: ''
+				// };
+
+				console.log('data is:', data);},
+				error: function(err) { console.log(err)}
+
+				// var response = JSON.parse(data);
+
+
+				// 	response = response.results[0];
+					
+				// 	response.address_components.forEach(function(component) {
+				// 		if (component.types.includes('street_number')) {
+				// 			l.address.street = component.long_name + ' ';
+				// 		} else if (component.types.includes('route')) {
+				// 			l.address.street += component.long_name;
+				// 		} else if (component.types.includes('locality')) {
+				// 			l.address.city = component.long_name;
+				// 		} else if (component.types.includes('postal_code')) {
+				// 			l.address.postal_code += component.long_name;
+				// 		}
+				// 	});
+
+				// l.save();
+			});
+
+
+
 			this.setState({ 
 				error: '',
 				confirmLocationVisibility: true,
