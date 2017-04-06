@@ -26,10 +26,12 @@ export class Container extends React.Component {
     }
     return (
       <div className="main-wrapper">
-      	<InfoText locations={this.props.locations} selectedPlace={ this.state.selectedPlace.index} />
+      	<InfoText changeSelectedPlace={ this.changeSelectedPlace }
+                  locations={this.props.locations} 
+                  selectedPlace={ this.state.selectedPlace.index} />
         <Map google={this.props.google} 
         	 zoom={14} 
-        	 style={{width: '50%', height: 'calc(100% - 90px)', position: 'relative'}}
+        	 style={{width: '100%', height: '100%', position: 'relative'}}
         	 initialCenter={{lat: 43.65073, lng: -79.40677}} >
 
         	 { this.props.locations.map( (location, index) => {
@@ -40,6 +42,7 @@ export class Container extends React.Component {
 	    	 			position={{lat: location.address.lat, lng: location.address.lon}}
 	    	 			name={`${location.name} ${location.category}`}
 	    	 			onClick={this.onMarkerClick}
+              onLoad={ this.onMarkerLoad }
 	    	 			// icon={{
 	 			     //      url: "../assets/images/noun_798989_cc.svg",
 	 			     //      anchor: new this.props.google.maps.Point(32,32),
@@ -48,7 +51,7 @@ export class Container extends React.Component {
 	    	 		/>
     	 		)
 	        }) }
-	 		<InfoWindow
+	 		  <InfoWindow
  		          marker={this.state.activeMarker}
  		          visible={this.state.showingInfoWindow} >
 		            <div>
@@ -61,6 +64,7 @@ export class Container extends React.Component {
     )
   }
 
+
   onMarkerClick(props, marker, e) {
     this.setState({
       selectedPlace: props,
@@ -69,6 +73,7 @@ export class Container extends React.Component {
     });
     // const theOne = $(`#${this.state.selectedPlace.index}`)
     // window.location.href = `#${this.state.selectedPlace.index}`;
+
 
     console.log(this.state.selectedPlace.index);
   }

@@ -5,6 +5,7 @@
 .info-wrapper + div {
 	left: 50%;
 	border-left: 2px solid black;
+	width: 50vw !important;
 }
 
 .location-list {
@@ -15,5 +16,14 @@
 	.location-item {
 		padding: 20px 40px;
 		border-bottom: 1px solid #ebebeb;
+	}
+
+	.highlighted {
+		background: #34b7ea;
+		transition: background-color 0.8s ease;
+		a {
+			color: black;
+			text-transform: underline;
+		}
 	}
 }

@@ -5,6 +5,11 @@ import styles from './infotext.scss';
 import Location from './location';
 
 class LocationsList extends React.Component {
+	constructor(props) {
+		super(props);
+		this.changeSelectedPlace = this.changeSelectedPlace.bind(this);
+	}
+
 	render() {
 		return (
 			<div className="location-list">
@@ -16,6 +21,8 @@ class LocationsList extends React.Component {
 								  category={ location.category }
 								  phone={ location.phone }
 								  address={ location.address }
+								  selectedPlace={ index === this.props.selectedPlace ? true : false }
+								  changeSelectedPlace={ this.changeSelectedPlace }
 					 />
 					)
 				}) }
@@ -23,10 +30,14 @@ class LocationsList extends React.Component {
 		)
 	}
 
+	changeSelectedPlace(newSelectedPlace) {
+		this.props.changeSelectedPlace(newSelectedPlace);
+	}
+
 	componentDidUpdate(){
-		if (this.props.index) {
+		if (this.props.selectedPlace) {
 			var container = $('.location-list'),
-			    scrollTo = $(`#${this.props.index}`);
+			    scrollTo = $(`#${this.props.selectedPlace}`);
 
 			// Or you can animate the scrolling:
 			container.animate({

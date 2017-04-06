@@ -26,9 +26,12 @@ class AddLocation extends React.Component {
 	}
 
 	render(){
-	    return (
-	    	<div className="add-new-location">
+    return (
+    	<div className="add-new-location ">
+	    	<div className="add-new-location button-container">
 	    		<button onClick={ () => this.setState({ modalVisibility: true }) }>Add New Location</button>
+	    		<button onClick={ this.props.onSignOut }>Sign out</button>
+	    	</div>
 				<div className={ this.state.modalVisibility ? 'modal-window visible' : 'modal-window'}>
 					<a className="close-button" onClick={ () => this.setState({ modalVisibility: false }) }>X</a>
 					
@@ -64,7 +67,7 @@ class AddLocation extends React.Component {
 					</div>
 				</div>
 			</div>
-	    );
+	  );
 	}
 
 	updateField(evt) {
