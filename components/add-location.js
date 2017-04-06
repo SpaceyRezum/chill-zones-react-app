@@ -14,13 +14,15 @@ class AddLocation extends React.Component {
 				category: '',
 				street: '',
 				postal_code: '',
-				city: ''
+				city: '',
+				phone_number: ''
 			},
 			confirmLocationVisibility: false,
 			confirmLocation: {}
 		};
 		this.submitNewLocation = this.submitNewLocation.bind(this);
 		this.updateField = this.updateField.bind(this);
+		this.setConfirmationMessage = this.setConfirmationMessage.bind(this);
 	}
 
 	render(){
@@ -30,7 +32,7 @@ class AddLocation extends React.Component {
 				<div className={ this.state.modalVisibility ? 'modal-window visible' : 'modal-window'}>
 					<a className="close-button" onClick={ () => this.setState({ modalVisibility: false }) }>X</a>
 					
-					<Field label="Enter exact address" name="name" value={ this.state.newLocation.name } onChange={ this.updateField } /> 
+					<Field label="Enter name or address" name="name" value={ this.state.newLocation.name } onChange={ this.updateField } /> 
 					<form label="Category" onChange={ this.updateField } value={ this.state.newLocation.category }>
 						Category
 						<input type="radio" name="category" id="CommunityCenter" value="Community Center"/>
@@ -68,7 +70,10 @@ class AddLocation extends React.Component {
 	updateField(evt) {
 	  const newLocation = this.state.newLocation;
 	  newLocation[evt.target.name] = evt.target.value;
-	  this.setState({ newLocation: newLocation });
+	  this.setState({ 
+	  	newLocation: newLocation ,
+	  	confirmLocationVisibility: false
+	  });
 	}
 
 	submitNewLocation() {
@@ -81,6 +86,7 @@ class AddLocation extends React.Component {
 				confirmLocation: ''
 			 });
 		} else {
+
 			console.log('Location to be tested against Google places API: ', newLocation);
 			// AJAX call to Google Geocode API to write here
 			////////////////////////////////////////////////
@@ -93,29 +99,23 @@ class AddLocation extends React.Component {
 				url: url,
 				success: function(data) {
 					console.log('data is:', data);
-					console.log('our search result is:');
 
-					// this.setState=({
-					// 	newLocation: {
-					// 		name: data[0].address_components[0].lon,
-					// 		category: '',
-					// 		street: '',
-					// 		postal_code: '',
-					// 		city: ''
-					// 	}
-					// })
+					this.setConfirmationMessage(data);
 				},
-				error: function(err) { console.log(err)}
+				error: function(err) { this.setState({ error: err}) }
 
 			});
 
-			this.setState({ 
-				error: '',
-				confirmLocationVisibility: true,
-				confirmLocation: newLocation
-			});
 		}
 	}
+			setConfirmationMessage(data) {
+				console.log('our search result is: ' + data.results[0].formatted_address);
+				this.setState({ 
+					confirmLocationVisibility: true
+					// newLocation: returnedLoction
+				});
+			}
+
 }
 
 export default AddLocation;
