@@ -30,7 +30,7 @@ class AddLocation extends React.Component {
 				<div className={ this.state.modalVisibility ? 'modal-window visible' : 'modal-window'}>
 					<a className="close-button" onClick={ () => this.setState({ modalVisibility: false }) }>X</a>
 					
-					<Field label="Name" name="name" value={ this.state.newLocation.name } onChange={ this.updateField } />
+					<Field label="Address or Name" name="name" value={ this.state.newLocation.name } onChange={ this.updateField } /> 
 					<form label="Category" onChange={ this.updateField } value={ this.state.newLocation.category }>
 						Category
 						<input type="radio" name="category" id="CommunityCenter" value="Community Center"/>
@@ -46,9 +46,9 @@ class AddLocation extends React.Component {
 						<input type="radio" name="category" id="other" value="Other place" />
 						<label htmlFor="other">Other place</label>
 					</form>
-					<Field label="Street Number & Street Name" name="street" value={ this.state.newLocation.street } onChange={ this.updateField } />
-					<Field label="Postal Code" name="postal_code" value={ this.state.newLocation.postal_code } onChange={ this.updateField } />
-					<Field label="City (must be in the Great Toronto Area)" name="city" value={ this.state.newLocation.city } onChange={ this.updateField } />
+					{/*<Field label="Street Number & Street Name" name="street" value={ this.state.newLocation.street } onChange={ this.updateField } />
+					{/*<Field label="Postal Code" name="postal_code" value={ this.state.newLocation.postal_code } onChange={ this.updateField } />*/}
+					{/*<Field label="City (must be in the Great Toronto Area)" name="city" value={ this.state.newLocation.city } onChange={ this.updateField } />*/}
 
 					{ this.state.error ? <div>{ this.state.error }</div> : null }
 
@@ -74,7 +74,7 @@ class AddLocation extends React.Component {
 	submitNewLocation() {
 		const newLocation = this.state.newLocation;
 		// if empty field, return error, else test again google place API (to see if it exists & to get lat & lng coordinates)
-		if (!newLocation.name || !newLocation.street || !newLocation.postal_code || !newLocation.city) {
+		if (!newLocation.name || !newLocation.category) {
 			this.setState({ 
 				error: 'Please fill in all the fields',
 				confirmLocationVisibility: false,
@@ -87,13 +87,23 @@ class AddLocation extends React.Component {
 			const googleAPIUrl = 'https://maps.googleapis.com/maps/api/geocode/json';
 			const googleAPIkey = '&key=AIzaSyDZY5u6OOV3Xuh_EUp0sIML8maJTzakfyc';
 
-			const url = googleAPIUrl + '?address=' + newLocation.address + googleAPIkey;
+			const url = googleAPIUrl + '?address=' + newLocation.address + 'components=locality:toronto' + googleAPIkey;
 				
 			$.get({
 				url: url,
 				success: function(data) {
 					console.log('data is:', data);
-					console.log('our search result is:')
+					console.log('our search result is:');
+
+					this.setState=({
+						newLocation: {
+							name: '',
+							category: '',
+							street: '',
+							postal_code: '',
+							city: ''
+						}
+					})
 				},
 				error: function(err) { console.log(err)}
 
