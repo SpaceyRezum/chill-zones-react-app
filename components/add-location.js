@@ -30,7 +30,7 @@ class AddLocation extends React.Component {
 				<div className={ this.state.modalVisibility ? 'modal-window visible' : 'modal-window'}>
 					<a className="close-button" onClick={ () => this.setState({ modalVisibility: false }) }>X</a>
 					
-					<Field label="Address or Name" name="name" value={ this.state.newLocation.name } onChange={ this.updateField } /> 
+					<Field label="Enter exact address" name="name" value={ this.state.newLocation.name } onChange={ this.updateField } /> 
 					<form label="Category" onChange={ this.updateField } value={ this.state.newLocation.category }>
 						Category
 						<input type="radio" name="category" id="CommunityCenter" value="Community Center"/>
@@ -85,9 +85,9 @@ class AddLocation extends React.Component {
 			// AJAX call to Google Geocode API to write here
 			////////////////////////////////////////////////
 			const googleAPIUrl = 'https://maps.googleapis.com/maps/api/geocode/json';
-			const googleAPIkey = '&key=AIzaSyDZY5u6OOV3Xuh_EUp0sIML8maJTzakfyc';
+			const googleAPIkey = '&key=AIzaSyBele3flrJsMOsJgWCwU21m5FDhXxNiO68';
 
-			const url = googleAPIUrl + '?address=' + newLocation.address + 'components=locality:toronto' + googleAPIkey;
+			const url = googleAPIUrl + '?address=' + newLocation.name + 'location=toronto' + googleAPIkey;
 				
 			$.get({
 				url: url,
@@ -95,39 +95,19 @@ class AddLocation extends React.Component {
 					console.log('data is:', data);
 					console.log('our search result is:');
 
-					this.setState=({
-						newLocation: {
-							name: '',
-							category: '',
-							street: '',
-							postal_code: '',
-							city: ''
-						}
-					})
+					// this.setState=({
+					// 	newLocation: {
+					// 		name: data[0].address_components[0].lon,
+					// 		category: '',
+					// 		street: '',
+					// 		postal_code: '',
+					// 		city: ''
+					// 	}
+					// })
 				},
 				error: function(err) { console.log(err)}
 
-				// var response = JSON.parse(data);
-
-
-				// 	response = response.results[0];
-					
-				// 	response.address_components.forEach(function(component) {
-				// 		if (component.types.includes('street_number')) {
-				// 			l.address.street = component.long_name + ' ';
-				// 		} else if (component.types.includes('route')) {
-				// 			l.address.street += component.long_name;
-				// 		} else if (component.types.includes('locality')) {
-				// 			l.address.city = component.long_name;
-				// 		} else if (component.types.includes('postal_code')) {
-				// 			l.address.postal_code += component.long_name;
-				// 		}
-				// 	});
-
-				// l.save();
 			});
-
-
 
 			this.setState({ 
 				error: '',
