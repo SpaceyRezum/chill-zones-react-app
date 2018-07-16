@@ -25,20 +25,20 @@ class AddLocation extends React.Component {
 		this.setConfirmationMessage = this.setConfirmationMessage.bind(this);
 	}
 
-	render(){
-    return (
-    	<div className="add-new-location ">
-	    	<div className="add-new-location button-container">
-	    		<button onClick={ () => this.setState({ modalVisibility: true }) }>Add New Location</button>
-	    		<button onClick={ this.props.onSignOut }>Sign out</button>
-	    	</div>
-				<div className={ this.state.modalVisibility ? 'modal-window visible' : 'modal-window'}>
-					<a className="close-button" onClick={ () => this.setState({ modalVisibility: false }) }>X</a>
-					
-					<Field label="Enter name or address" name="name" value={ this.state.newLocation.name } onChange={ this.updateField } /> 
-					<form label="Category" onChange={ this.updateField } value={ this.state.newLocation.category }>
+	render() {
+		return (
+			<div className="add-new-location ">
+				<div className="add-new-location button-container">
+					<button onClick={() => this.setState({ modalVisibility: true })}>Add New Location</button>
+					<button onClick={this.props.onSignOut}>Sign out</button>
+				</div>
+				<div className={this.state.modalVisibility ? 'modal-window visible' : 'modal-window'}>
+					<a className="close-button" onClick={() => this.setState({ modalVisibility: false })}>X</a>
+
+					<Field label="Enter name or address" name="name" value={this.state.newLocation.name} onChange={this.updateField} />
+					<form label="Category" onChange={this.updateField} value={this.state.newLocation.category}>
 						Category
-						<input type="radio" name="category" id="CommunityCenter" value="Community Center"/>
+						<input type="radio" name="category" id="CommunityCenter" value="Community Center" />
 						<label htmlFor="CommunityCenter">Community Center</label>
 						<input type="radio" name="category" id="Library" value="Library" />
 						<label htmlFor="Library">Library</label>
@@ -55,39 +55,39 @@ class AddLocation extends React.Component {
 					{/*<Field label="Postal Code" name="postal_code" value={ this.state.newLocation.postal_code } onChange={ this.updateField } />*/}
 					{/*<Field label="City (must be in the Great Toronto Area)" name="city" value={ this.state.newLocation.city } onChange={ this.updateField } />*/}
 
-					{ this.state.error ? <div>{ this.state.error }</div> : null }
+					{this.state.error ? <div>{this.state.error}</div> : null}
 
-					<button onClick={ this.submitNewLocation }>Submit New Location</button>
+					<button onClick={this.submitNewLocation}>Submit New Location</button>
 
-					<div className={this.state.confirmLocationVisibility ? 'visible' : 'modal-window'}> 
-						Is this the place you were trying to add:<br/>
-						{ this.state.confirmLocation.name }<br/>
-						{ this.state.confirmLocation.street }
-						{ `${this.state.confirmLocation.postal_code} - ${this.state.confirmLocation.city}` }<br/>
+					<div className={this.state.confirmLocationVisibility ? 'visible' : 'modal-window'}>
+						Is this the place you were trying to add:<br />
+						{this.state.confirmLocation.name}<br />
+						{this.state.confirmLocation.street}
+						{`${this.state.confirmLocation.postal_code} - ${this.state.confirmLocation.city}`}<br />
 					</div>
 				</div>
 			</div>
-	  );
+		);
 	}
 
 	updateField(evt) {
-	  const newLocation = this.state.newLocation;
-	  newLocation[evt.target.name] = evt.target.value;
-	  this.setState({ 
-	  	newLocation: newLocation ,
-	  	confirmLocationVisibility: false
-	  });
+		const newLocation = this.state.newLocation;
+		newLocation[evt.target.name] = evt.target.value;
+		this.setState({
+			newLocation: newLocation,
+			confirmLocationVisibility: false
+		});
 	}
 
 	submitNewLocation() {
 		const newLocation = this.state.newLocation;
 		// if empty field, return error, else test again google place API (to see if it exists & to get lat & lng coordinates)
 		if (!newLocation.name || !newLocation.category) {
-			this.setState({ 
+			this.setState({
 				error: 'Please fill in all the fields',
 				confirmLocationVisibility: false,
 				confirmLocation: ''
-			 });
+			});
 		} else {
 
 			console.log('Location to be tested against Google places API: ', newLocation);
@@ -97,27 +97,27 @@ class AddLocation extends React.Component {
 			const googleAPIkey = '&key=AIzaSyBele3flrJsMOsJgWCwU21m5FDhXxNiO68';
 
 			const url = googleAPIUrl + '?address=' + newLocation.name + 'location=toronto' + googleAPIkey;
-				
+
 			$.get({
 				url: url,
-				success: function(data) {
+				success: function (data) {
 					console.log('data is:', data);
 
 					this.setConfirmationMessage(data);
 				},
-				error: function(err) { this.setState({ error: err}) }
+				error: function (err) { this.setState({ error: err }) }
 
 			});
 
 		}
 	}
-			setConfirmationMessage(data) {
-				console.log('our search result is: ' + data.results[0].formatted_address);
-				this.setState({ 
-					confirmLocationVisibility: true
-					// newLocation: returnedLoction
-				});
-			}
+	setConfirmationMessage(data) {
+		console.log('our search result is: ' + data.results[0].formatted_address);
+		this.setState({
+			confirmLocationVisibility: true
+			// newLocation: returnedLoction
+		});
+	}
 
 }
 

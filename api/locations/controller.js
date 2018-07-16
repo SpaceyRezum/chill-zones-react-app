@@ -2,7 +2,10 @@ var Location = require('./model');
 
 exports.index = function(req, res) {
   Location.find()
-  .then(locations => res.send(locations))
+  .then(locations => {
+    console.log(locations);
+    res.send(locations);
+  });
 }
 
 exports.show = function(req, res) {

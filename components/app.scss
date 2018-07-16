@@ -33,7 +33,8 @@ h1 {
 
 main > div > div {
 	display: flex;
-	height: 100vh;
+	max-height: 100vh;
+	overflow: hidden;
 }
 
 a {

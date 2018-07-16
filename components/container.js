@@ -73,9 +73,6 @@ export class Container extends React.Component {
     });
     // const theOne = $(`#${this.state.selectedPlace.index}`)
     // window.location.href = `#${this.state.selectedPlace.index}`;
-
-
-    console.log(this.state.selectedPlace.index);
   }
 }
 

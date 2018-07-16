@@ -1,8 +1,6 @@
 var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
-var passportLocalMongoose = require('passport-local-mongoose');
-
 var webpack = require('webpack');
 var webpackMiddleware = require('webpack-dev-middleware');
 var setupAuth = require('./auth');
@@ -17,7 +15,6 @@ app.use(bodyParser.json());
 
 // Use the method set in auth.js to authenticate user
 setupAuth(app);
-
 
 // Serve bundle.js
 app.use(webpackMiddleware(webpack(require('./webpack.config.js'))));

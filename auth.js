@@ -11,8 +11,8 @@ module.exports = function(app) {
   passport.deserializeUser(User.deserializeUser());
 
   // Allow express session to store cookies and stores secret password in server environment
-  app.use(require('express-session')({ secret: process.env.MY_SECRET, resave: false, saveUninitialized: true }));
-  // Initialize passport and it's session
+  app.use(session({ secret: process.env.MY_SECRET, resave: false, saveUninitialized: true }));
+  // Initialize passport and its session
   app.use(passport.initialize());
   app.use(passport.session());
 
