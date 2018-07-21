@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './login.scss';
 import Field from './field';
 import $ from 'jquery';
 
@@ -24,7 +23,7 @@ class Login extends React.Component {
   render(){
     return (
       <div className="login button-container">
-        <div className="loginButtons">
+        <div className="userButtons">
           <button onClick={ () => this.toggleModalWindow('signup') }>Sign up</button>
           <button onClick={ () => this.toggleModalWindow('login') }>Log in</button>
         </div>

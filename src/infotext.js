@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './infotext.scss';
 import LocationsList from './locationsList';
 
 class InfoText extends React.Component {

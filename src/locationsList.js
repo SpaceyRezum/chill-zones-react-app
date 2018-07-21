@@ -1,7 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
 
-import styles from './infotext.scss';
 import Location from './location';
 
 class LocationsList extends React.Component {
@@ -13,7 +12,7 @@ class LocationsList extends React.Component {
 	render() {
 		return (
 			<div className="location-list">
-				{ this.props.locations.map((location, index) => {
+				{ this.props.locations.length > 0 ? this.props.locations.map((location, index) => {
 					return ( 
 						<Location key={ index }
 								  index={ index }
@@ -25,7 +24,7 @@ class LocationsList extends React.Component {
 								  changeSelectedPlace={ this.changeSelectedPlace }
 					 />
 					)
-				}) }
+				}) : null}
 			</div>
 		)
 	}

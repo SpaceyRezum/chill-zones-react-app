@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './infotext.scss';
 
 class Location extends React.Component {
 	render() {

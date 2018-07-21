@@ -1,10 +1,8 @@
 import React from 'react';
 import Container from './container';
-
-import $ from 'jquery';
-import styles from './app.scss';
 import Login from './login';
 import AddLocation from './add-location';
+import $ from 'jquery';
 
 class App extends React.Component {
 	constructor(props) {
@@ -26,8 +24,7 @@ class App extends React.Component {
     		<header>
 		    	<h1>CHILL ZONES</h1>
           { this.state.mode === 'not-logged' ? 
-            <Login onLogin={ this.loginUser }/> : null
-            // <AddLocation onSignOut={ this.signOut }/>
+            <Login onLogin={ this.loginUser }/> : <AddLocation onSignOut={ this.signOut }/>
           }
 		    </header>
 		    <main>
@@ -61,10 +58,10 @@ class App extends React.Component {
 
   getLocationsFromAPI() {
   	$.get('/api/locations').then((data) => {
+      console.log("data");
+      console.log(data);
   		let locations = data;
   		this.setState({ locations: locations })
-  		// console.log('locations were updated, here they are: ');
-  		// console.log(this.state.locations);
   	});
   }
 }

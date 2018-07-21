@@ -1,7 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import GoogleApiComponent from './GoogleApiComponent';
-
 import { Map, Marker } from 'google-maps-react';
 import InfoWindow from './info-window';
 import InfoText from './infotext';
@@ -43,11 +41,6 @@ export class Container extends React.Component {
 	    	 			name={`${location.name} ${location.category}`}
 	    	 			onClick={this.onMarkerClick}
               onLoad={ this.onMarkerLoad }
-	    	 			// icon={{
-	 			     //      url: "../assets/images/noun_798989_cc.svg",
-	 			     //      anchor: new this.props.google.maps.Point(32,32),
-	 			     //      scaledSize: new this.props.google.maps.Size(64,64)
-	 			     //    }} 
 	    	 		/>
     	 		)
 	        }) }

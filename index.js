@@ -1,9 +1,9 @@
 var express = require('express');
 var app = express();
+var path = require('path');
 var mongoose = require('mongoose');
-var webpack = require('webpack');
-var webpackMiddleware = require('webpack-dev-middleware');
 var setupAuth = require('./auth');
+var port = process.env.PORT || 8080;
 
 require('dotenv').config();
 
@@ -16,17 +16,17 @@ app.use(bodyParser.json());
 // Use the method set in auth.js to authenticate user
 setupAuth(app);
 
-// Serve bundle.js
-app.use(webpackMiddleware(webpack(require('./webpack.config.js'))));
-
 // Serve API assets / ost route file.
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'build')));
 
 // Include API routes
 app.use('/api/locations', require('./api/locations'));
+app.use('/api/validateLocation', require('./api/validateLocation'));
 
 // If none of the above matches, serve public/index.html.
-app.get('*', (req, res) => res.sendFile(__dirname + '/public/index.html'))
+app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'build', 'index.html')));
 
 //heroku will tell us what the port is. PORT var set by heroku
-app.listen(process.env.PORT || 8080);
+app.listen(port, function() {
+    console.log("Server running on " + port);
+});

@@ -1,0 +1,8 @@
+{
+  "short_name": "Chill Zones",
+  "name": "Chill Zones - Cool Down in the 6",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
