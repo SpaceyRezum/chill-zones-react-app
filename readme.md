@@ -1,6 +1,6 @@
 # Chill Zones
 
-[http://chill-zones.herokuapp.com/](http://chill-zones.herokuapp.com/)
+[https://chillzones-toronto.herokuapp.com/](http://chill-zones.herokuapp.com/)
 
 Chill Zone finder app platform as Single Page Application using React.js, Express, and MongoDB
 
