@@ -58,12 +58,13 @@ class AddLocation extends React.Component {
 
 					<button onClick={this.validateNewLocation}>Submit New Location</button>
 
-					{ this.state.isLoading ? "It's loading" : (<div className={this.state.confirmLocationVisibility ? 'visible' : 'modal-window'}>
+					{ this.state.isLoading ? <div>Loading...</div> : (<div className={this.state.confirmLocationVisibility ? 'visible' : 'modal-window'}>
 						Is this the place you were trying to add?<br />
 						{this.state.confirmLocation.name}<br />
 						<button onClick={() => this.saveLocation(this.state.userInput.name, this.state.userInput.category, this.state.confirmLocation.placeId)}>Yes</button>
 						<button onClick={() => {
-							this.setSuccessErrorMessage(false, {});
+							this.setState({
+								confirmLocationVisibility: false});
 							window.alert('Try to be more precise in the address field, it could help the api find the location faster');
 						}}>No</button>
 					</div>) }
@@ -148,10 +149,11 @@ class AddLocation extends React.Component {
 				confirmLocation: {},
 				isLoading: false
 			});
-			alert("Location was uploaded successfully");
+			window.alert("Location was uploaded successfully");
 		} else {
+			console.log(data);
 			this.setState({
-				error: data,
+				error: "",
 				confirmLocationVisibility: false,
 				confirmLocation: '',
 				isLoading: false

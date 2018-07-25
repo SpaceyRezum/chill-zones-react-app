@@ -35,8 +35,10 @@ exports.save = function (req, res) {
       }
     });
 
-    location.save().then(res.send("Location updated successfully")).catch(function (err) {
-      console.log("mongoose save error")
+    location.save()
+    .then(res.status(200).json("Location updated successfully"))
+    .catch(function (err) {
+      console.log("mongoose save error");
       res.status(500).json(err);
     });
   }).error(function (err) {

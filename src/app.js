@@ -58,8 +58,6 @@ class App extends React.Component {
 
   getLocationsFromAPI() {
   	$.get('/api/locations').then((data) => {
-      console.log("data");
-      console.log(data);
   		let locations = data;
   		this.setState({ locations: locations })
   	});

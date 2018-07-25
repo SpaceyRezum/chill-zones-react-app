@@ -21,12 +21,14 @@
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "build-js": "react-scripts build",
-    "build": "npm-run-all build-js build-css",
-    "build-css": "node-sass-chokidar ./src/*.scss ./build/styles.css",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "build": "npm-run-all build-js build-css-prod",
+    "build-css-prod": "node-sass-chokidar src/app.scss build/styles.css",
+    "build-css-dev": "node-sass-chokidar src/app.scss public/styles.css",
+    "watch-css": "npm run build-css-dev && node-sass-chokidar src/app.scss public/styles.css --watch --recursive",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:8080",
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"

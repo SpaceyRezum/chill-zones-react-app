@@ -1,0 +1,122 @@
+html {
+  height: 100%; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  line-height: 150%;
+  height: 100%; }
+
+#placeholder,
+#placeholder > div {
+  height: 100%; }
+
+.main-wrapper h2,
+.main-wrapper .subtitle {
+  padding-left: 40px; }
+
+h1 {
+  font-family: sans-serif;
+  text-align: center;
+  line-height: 50px;
+  border-bottom: 2px solid black;
+  background: #34B7EA;
+  margin: 0;
+  padding: 20px; }
+
+main > div > div {
+  display: flex;
+  max-height: 100vh;
+  overflow: hidden; }
+
+a {
+  color: #34B7EA;
+  text-decoration: none; }
+
+.button-container {
+  position: relative; }
+
+.userButtons {
+  display: flex;
+  justify-content: flex-end;
+  width: 300px;
+  position: absolute;
+  top: -60px;
+  right: 30px; }
+  .userButtons button {
+    min-width: 80px;
+    padding: 10px;
+    font-size: .8rem; }
+    .userButtons button:last-child {
+      margin-left: 1rem; }
+
+.info-wrapper {
+  width: 50%; }
+
+.info-wrapper + div {
+  left: 50%;
+  border-left: 2px solid black;
+  width: 50vw !important; }
+
+.location-list {
+  height: 100%;
+  overflow-y: scroll;
+  border-top: 2px solid black; }
+  .location-list .location-item {
+    padding: 20px 40px;
+    border-bottom: 1px solid #ebebeb; }
+  .location-list .highlighted {
+    background: #34b7ea;
+    transition: background-color 0.8s ease; }
+    .location-list .highlighted a {
+      color: black;
+      text-transform: underline; }
+
+.modal-window {
+  display: none;
+  background: whitesmoke;
+  padding: 80px 60px 80px 40px;
+  position: absolute;
+  z-index: 10;
+  width: 40vw;
+  left: 30vw;
+  top: 10vw;
+  box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.5); }
+  .modal-window .close-button {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: black;
+    font-size: 12px;
+    cursor: pointer; }
+  .modal-window form {
+    margin-bottom: 1rem; }
+  .modal-window button {
+    min-width: 80px;
+    padding: 10px;
+    font-size: .8rem; }
+
+.visible {
+  display: block; }
+
+.editor {
+  padding: 10px; }
+
+.field {
+  margin-bottom: 20px; }
+  .field input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: solid 1px #EEE; }
+  .field label {
+    color: #999;
+    text-transform: uppercase;
+    font-weight: 200; }
+
+.error {
+  color: #a31e15;
+  font-weight: bold;
+  margin-bottom: 10px; }

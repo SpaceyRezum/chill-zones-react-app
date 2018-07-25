@@ -29,7 +29,7 @@ h1 {
     line-height: 50px;
     border-bottom: 2px solid black;
     background: #34B7EA;
-    margin: 0 auto;
+    margin: 0;
     padding: 20px;
 }
 
@@ -49,9 +49,20 @@ a {
 }
 
 .userButtons {
+    display: flex;
+    justify-content: flex-end;
+    width: 300px;
     position: absolute;
     top: -60px;
     right: 30px;
+    button {
+        min-width: 80px;
+        padding: 10px;
+        font-size: .8rem;
+        &:last-child {
+            margin-left: 1rem;
+        }
+    }
 }
 
 .info-wrapper {
@@ -100,6 +111,16 @@ a {
         font-size: 12px;
         cursor: pointer;
     }
+
+    form {
+        margin-bottom: 1rem;
+    }
+
+    button {
+        min-width: 80px;
+        padding: 10px;
+        font-size: .8rem;
+    }
 }
 
 .visible {
@@ -110,21 +131,19 @@ a {
     padding: 10px;
 }
 
-.field input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: solid 1px #EEE;
-}
-
 .field {
     margin-bottom: 20px;
-}
-
-.field label {
-    color: #999;
-    text-transform: uppercase;
-    font-weight: 200;
+    input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: solid 1px #EEE;
+    }
+    label {
+        color: #999;
+        text-transform: uppercase;
+        font-weight: 200;
+    }
 }
 
 .error {
